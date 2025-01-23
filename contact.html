@@ -8,142 +8,121 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous" type="text/css">
-  <!-- remember, jQuery is completely optional -->
-  <!-- <script type='text/javascript' src='js/jquery-1.11.1.min.js'></script> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
   <script type="text/javascript" src="js/jquery.particleground.js"></script>
   <script type="text/javascript" src="js/demo.js"></script>
 
-  <script>
-    function sendEmail() {
-      var name = encodeURIComponent(document.getElementById("name").value);
-      var email = encodeURIComponent(document.getElementById("email").value);
-      var number = encodeURIComponent(document.getElementById("number").value);
-      var message = encodeURIComponent(document.getElementById("message").value);
-      var subject = encodeURIComponent("Message from yoenzhang.github.io");
-
-      var mailtoLink = "mailto:yoen.zhang@uwaterloo.ca";
-      mailtoLink += "?subject=" + subject;
-      mailtoLink += "&body=Hi there! My name is " + name + ". ";
-      mailtoLink += "You can send me an email at " + email + " ";
-      mailtoLink += "or call me at " + number + ".%0D%0A";
-      mailtoLink += " " + message;
-
-      window.open(mailtoLink, '_blank');
-    }
-  </script>
-
   <style>
-  body,h1,h2,h3,h4,h5,h6 {font-family: "Avenir", sans-serif;}
-  body, html {
-    height: 100%;
-    color: #777;
-    line-height: 1.8;
-  }
-
-  .full-height {
-    height: 100%;
-  }
-
-  /* Create a Parallax Effect */
-  .bgimg-1, .bgimg-2, .bgimg-3 {
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  .w3-wide {letter-spacing: 10px;}
-  .w3-hover-opacity {cursor: pointer;}
-
-  /* Turn off parallax scrolling for tablets and phones */
-  @media only screen and (max-device-width: 1600px) {
-    .bgimg-1, .bgimg-2, .bgimg-3 {
-      background-attachment: scroll;
-      min-height: 400px;
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: auto;
+      font-family: "Avenir", sans-serif;
+      color: #777;
+      line-height: 1.8;
     }
-  }
 
-  /* Grey Button */
-  .btn {
-    border: none;
-    background-color: inherit;
-    padding: 14px 28px;
-    font-size: 16px;
-    cursor: pointer;
-    display: inline-block;
-  }
+    #particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Keep the particles in the background */
+      background: #f5f5f5;
+    }
 
-  .default:hover {
-    background: #e7e7e7;
-  }
+    .topnav {
+      background-color: #333;
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
+      z-index: 100; /* Ensure it stays above other content */
+    }
 
-  .fix-middle{
-    padding-top: 5px;
-    padding-bottom: 10px;
-  }
+    .topnav a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
 
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .content {
+      position: relative;
+      z-index: 10; /* Place above the particle background */
+      padding: 100px 20px; /* Add top padding to avoid overlap with the navbar */
+      text-align: center;
+    }
+
+    .form-section {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    textarea, input[type="text"], input[type="email"], input[type="tel"] {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
   </style>
 </head>
 
-  <body>
-    <div class="w3-top">
-      <div class="topnav" id="myTopnav">
-        <a target="_self" href="index.html"; font-family: 'Avenir', sans-serif;>Home</a>
-        <a target="_self" href="about.html"; font-family: 'Avenir', sans-serif;>About</a>
-        <a target="_self" href="contact.html"; font-family: 'Avenir', sans-serif;>Contact</a>
-      </div>
-
-    <!-- Navbar on small screens -->
-    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-      <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
-      <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
-      <a href="#" class="w3-bar-item w3-button">SEARCH</a>
-    </div>
+<body>
+  <div class="topnav">
+    <a target="_self" href="index.html">Home</a>
+    <a target="_self" href="about.html">About</a>
+    <a target="_self" href="contact.html">Contact</a>
   </div>
 
-  <div id="particles">
-      <div id="intro">
-        <div style="color: black;" class="w3-content w3-container w3-padding-64 full-height" id="contact" >
-          <div class="w3-row w3-padding-32 w3-section">
-            <div class="w3-center w3-panel">
-              <div class="w3-large w3-margin-bottom">
-                <h3 class="w3-center">LET'S KEEP IN TOUCH</h3>
-                <p style="font-size: 20px;"class="w3-center"><em>I'd love your feedback!</em></p>
-                <i style="font-size: 20px;"class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Waterloo, Canada<br>
-                <i style="font-size: 20px;"class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Phone: +1 647 687 3980<br>
-                <i style="font-size: 20px;"class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: yoen.zhang@uwaterloo.ca<br>
-              </div>
-              <p style="font-size: 20px;">We can grab a cup of <i class="fa fa-coffee"></i>, or leave me a note:</p>
+  <div id="particles"></div>
 
-              <form action="mailto:yoen.zhang@uwaterloo.ca" method="POST" name="form" role="form">
-                <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
-                  <div class="w3-half">
-                    <input class="w3-input w3-border" type="text" name="cf_name" id="name" placeholder="Name" required>
-                  </div>
-                  <div class="w3-half">
-                    <input class="w3-input w3-border" type="text" name="cf_email" id="email" placeholder="Email" required>
-                  </div>
-                </div>
-                <div style="padding-bottom: 10px;" class="fix-middle">
-                  <input class="w3-input w3-border" type="text" name="cf_number" id="number" placeholder="Phone Number" required>
-                </div>
-                <textarea class="w3-input w3-border" name="cf_message" id="message" placeholder="Message" required></textarea>
-                <button class="w3-button w3-black w3-right w3-section" type="button" onclick="sendEmail();">
-                  <i class="fa fa-paper-plane"></i>
-                  SEND MESSAGE
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-
-
+  <div class="content">
+    <div class="form-section">
+      <p>Let's Keep in Touch!</p>
+      <p><i class="fa fa-map-marker"></i> Toronto, Canada</p>
+      <p><i class="fa fa-phone"></i> +1 647 687 3980</p>
+      <p><i class="fa fa-envelope"></i> yoenzhang@gmail.com</p>
+      <form>
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="tel" id="number" placeholder="Phone Number" required>
+        <textarea id="message" placeholder="Message" required></textarea>
+        <button type="button" onclick="sendEmail();">
+          <i class="fa fa-paper-plane"></i> Send Message
+        </button>
+      </form>
     </div>
   </div>
-
-
-  </body>
+</body>
 </html>

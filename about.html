@@ -9,36 +9,99 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous" type="text/css">
-  <!-- remember, jQuery is completely optional -->
-  <!-- <script type='text/javascript' src='js/jquery-1.11.1.min.js'></script> -->
   <script type="text/javascript" src="js/jquery.particleground.js"></script>
   <script type="text/javascript" src="js/demo.js"></script>
+
+  <style>
+    /* Navbar Styles */
+    .topnav {
+      background-color: #333;
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
+      z-index: 100; /* Ensure it stays above other content */
+      top: 0;
+    }
+
+    .topnav a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    /* Adjust layout for scrollability */
+    body {
+      margin: 0;
+      padding-top: 50px; /* Space for fixed navbar */
+      overflow-y: auto;
+    }
+
+    /* Centering the intro text */
+    #intro {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-top: 20px;
+      padding: 20px;
+    }
+
+    .intro-text {
+      color: black;
+      font-family: 'Avenir', sans-serif;
+      font-weight: 10;
+      margin-top: 20px;
+    }
+
+    .intro-description {
+      background-color: white;
+      font-size: 17px;
+      text-align: center;
+      color: black;
+      font-family: 'Avenir', sans-serif;
+      font-weight: 10;
+      margin: 10px 0;
+    }
+
+    #particles {
+      /* Add your particle background effects here if needed */
+    }
+  </style>
 </head>
 
-  <body>
-    <div class="topnav" id="myTopnav">
-      <a target="_self" href="index.html"; font-family: 'Avenir', sans-serif;>Home</a>
-      <a target="_self" href="about.html"; font-family: 'Avenir', sans-serif;>About</a>
-      <a target="_self" href="contact.html"; font-family: 'Avenir', sans-serif;>Contact</a>
-    </div>
+<body>
+  <div class="topnav">
+    <a target="_self" href="index.html" class="nav-link">Home</a>
+    <a target="_self" href="about.html" class="nav-link">About</a>
+    <a target="_self" href="contact.html" class="nav-link">Contact</a>
+  </div>
 
   <div id="particles">
-      <div id="intro">
-      <a href="deedy.pdf" style="color: black;"><img src="Yoen_Zhang.jpg" height="200" width="200"></a>
-      <h2 style="color: black; font-family: 'Avenir', sans-serif; font-weight: 10;">Yoen Zhang&nbsp</h2>
-      <h3 style="background-color: white; font-size: 17px; text-align: center; color: black; font-family: 'Avenir', sans-serif; font-weight: 10;">
+    <div id="intro">
+      <a href="deedy.pdf" style="color: black;">
+        <img src="Yoen_Zhang.jpg" alt="Yoen Zhang" style="width: 200px; height: auto; object-fit: cover;">
+      </a>        
+      <h2 class="intro-text">Yoen Zhang&nbsp;</h2>
+      <h3 class="intro-description">
         Hi! My Name is Yoen Zhang. <br>
-        Currently I am a third year student at the University of Waterloo! <br>
-        I am enrolled in the Honour's of Bachelor's Computer Science program and when I'm not coding, <br>
-        I love to catch up with my friends, learn new recipes to cook, and of course relax and watch some Netflix shows. <br>
-        Feel free to send me a text or add me on any socials that I have listed on the Home page! <br>
+        Currently, I am a 4th-year student at the University of Waterloo! <br>
+        I am enrolled in the Honours Bachelor’s Computer Science program, and when I’m not coding, <br>
+        I love catching up with my friends, learning new recipes to cook, and relaxing with some Netflix shows. <br>
+        Feel free to send me a text or add me on any socials listed on the Home page! <br>
         Better yet, you can always send me an email through the contact tab as well! <br>
-        I look forward to getting in contact with you! </h3>
-
-
+        I look forward to getting in contact with you! 
+      </h3>
     </div>
   </div>
 
-
-  </body>
+</body>
 </html>
