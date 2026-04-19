@@ -180,8 +180,12 @@
 }
 
 .vertical-timeline-element-date {
-  color: #1a1a2e !important;
-  opacity: 0.85;
+  color: #0d8a6e !important;
+  opacity: 0.9;
+  font-family: "JetBrains Mono", ui-monospace, monospace !important;
+  font-size: 12px !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 .vertical-timeline::before {
   background: rgba(26, 26, 46, 0.12) !important;

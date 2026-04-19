@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import { close, profilePhoto, menu } from '../assets';
 import { navLinks } from '../constants';
 import { styles } from '../styles';
+import { useImageViewer } from './ImageViewer';
 
 const Navbar = () => {
   const [active, setActive] = useState('');
   const [toggle, setToggle] = useState(false);
+  const { openImage } = useImageViewer() || {};
 
   const toggleResume = () => {
     const resumeUrl = `${import.meta.env.BASE_URL}yoenzhang.pdf`;
@@ -63,20 +65,29 @@ const Navbar = () => {
         className={`${styles.paddingX} w-full flex items-center py-3 fixed top-0 z-20 bg-primary`}
       >
         <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
-          <Link
-            to="/"
-            className="flex items-center gap-2"
-            onClick={() => {
-              setActive('');
-              window.scrollTo(0, 0);
-            }}
-          >
-            <img src={profilePhoto} alt="Yoen Zhang" className="w-9 h-9 rounded-full object-cover" />
-            <p className="text-ink text-[20px] font-bold cursor-pointer flex">
-              YOEN&nbsp;
-              <span className="sm:block hidden">ZHANG</span>
-            </p>
-          </Link>
+          <div className="flex items-center gap-2">
+            <img
+              src={profilePhoto}
+              alt="Yoen Zhang"
+              onClick={(e) => {
+                e.stopPropagation();
+                if (openImage) openImage(profilePhoto, "YOEN.ZHANG");
+              }}
+              className="w-9 h-9 rounded-full object-cover cursor-zoom-in hover:ring-2 hover:ring-[#0d8a6e] transition-all"
+            />
+            <Link
+              to="/"
+              onClick={() => {
+                setActive('');
+                window.scrollTo(0, 0);
+              }}
+            >
+              <p className="text-ink text-[20px] font-bold cursor-pointer flex">
+                YOEN&nbsp;
+                <span className="sm:block hidden">ZHANG</span>
+              </p>
+            </Link>
+          </div>
           {renderNavLinks(false)}
           <div className="sm:hidden flex flex-1 justify-end items-center">
             <img

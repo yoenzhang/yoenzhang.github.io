@@ -7,8 +7,9 @@ import { github, yoenPic4 } from "../assets";
 import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
+import { useImageViewer } from "./ImageViewer";
 
-const ProjectCard = ({ index, name, description, tags, source_code_link }) => {
+const ProjectCard = ({ index, name, description, source_code_link }) => {
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.15, 0.75)}>
       <Tilt
@@ -17,7 +18,7 @@ const ProjectCard = ({ index, name, description, tags, source_code_link }) => {
           scale: 1,
           speed: 450,
         }}
-        className="hud-frame bg-tertiary/70 p-6 sm:w-[360px] w-full min-h-[260px] flex flex-col relative overflow-hidden"
+        className="hud-frame bg-tertiary/70 p-6 w-full min-h-[350px] flex flex-col relative overflow-hidden"
       >
         <span className="hud-bl" />
         <span className="hud-br" />
@@ -39,19 +40,13 @@ const ProjectCard = ({ index, name, description, tags, source_code_link }) => {
           </div>
         </div>
         <p className="relative mt-3 text-secondary text-[14px] flex-1">{description}</p>
-        <div className="relative mt-4 flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <p key={tag.name} className={`text-[14px] font-mono-hud ${tag.color}`}>
-              #{tag.name}
-            </p>
-          ))}
-        </div>
       </Tilt>
     </motion.div>
   );
 };
 
 const Works = () => {
+  const { openImage } = useImageViewer() || {};
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -71,16 +66,23 @@ const Works = () => {
         ))}
         <motion.div
           variants={fadeIn("up", "spring", projects.length * 0.15, 0.75)}
-          className="hud-frame relative overflow-hidden min-h-[260px]"
+          onClick={() => openImage && openImage(yoenPic4, "SIDE_QUEST / BURGER_HUNT")}
+          className="hud-frame relative overflow-hidden min-h-[350px] cursor-zoom-in group"
         >
           <span className="hud-bl" />
           <span className="hud-br" />
           <img
             src={yoenPic4}
             alt="Burger hunt"
-            className="absolute inset-0 w-full h-full object-cover object-top grayscale-[10%] contrast-[1.05]"
+            className="absolute inset-0 w-full h-full object-cover object-[50%_30%] grayscale-[10%] contrast-[1.05] transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
+          <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/35 transition-colors pointer-events-none" />
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            <span className="font-mono-hud text-[10px] text-primary bg-ink/80 border border-[#0d8a6e]/60 px-3 py-1">
+              &gt; EXPAND_VIEW
+            </span>
+          </div>
           <div className="absolute inset-0 hud-scanlines pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent pointer-events-none" />
           <div className="absolute top-3 left-3 font-mono-hud text-[11px] text-[#0d8a6e] bg-primary/85 px-2 py-0.5">

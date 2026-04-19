@@ -41,6 +41,7 @@ import yoenPic2 from "./yoen-pics/IMG_2512.jpg";
 import yoenPic3 from "./yoen-pics/IMG_3854.jpg";
 import yoenPic4 from "./yoen-pics/IMG_8982.jpg";
 import yoenPic5 from "./yoen-pics/IMG_6828.jpg";
+import yoenPic6 from "./yoen-pics/IMG_1620.jpg";
 import github from "./github.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
@@ -71,6 +72,7 @@ export {
   yoenPic3,
   yoenPic4,
   yoenPic5,
+  yoenPic6,
   menu,
   close,
   swift,

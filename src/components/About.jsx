@@ -18,7 +18,7 @@ const About = () => {
       </motion.div>
 
       <div className="mt-6 grid grid-cols-1 md:grid-cols-[auto,1fr] gap-8 items-start">
-        <SectionPortrait src={yoenPic2} tag="IMG_01" caption="SAN_FRANCISCO.CA" />
+        <SectionPortrait src={yoenPic2} caption="SAN_FRANCISCO.CA" />
 
         <motion.p
           variants={fadeIn('left', 'tween', 0.2, 1)}

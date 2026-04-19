@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
@@ -6,6 +6,7 @@ import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 import { yoenPic1 } from "../assets";
+import { useImageViewer } from "./ImageViewer";
 import "../index.css";
 
 const InputField = ({ label, value, onChange, placeholder, name, type }) => (
@@ -33,6 +34,23 @@ const Contact = () => {
   const [emailError, setEmailError] = useState("");
   const [nameError, setNameError] = useState("");
   const [confirmation, setConfirmation] = useState("");
+
+  const earthAngleRef = useRef(0);
+  const earthDotRef = useRef(null);
+  const { openImage } = useImageViewer() || {};
+
+  useEffect(() => {
+    let rafId;
+    const tick = () => {
+      if (earthDotRef.current) {
+        const deg = earthAngleRef.current * (180 / Math.PI);
+        earthDotRef.current.style.transform = `rotateX(70deg) rotateZ(${deg}deg)`;
+      }
+      rafId = requestAnimationFrame(tick);
+    };
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -100,21 +118,27 @@ const Contact = () => {
   return (
     <div className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}>
       <motion.div variants={slideIn("left", "tween", 0.2, 1)} className="flex-[0.75] bg-tertiary border border-ink/10 p-8 rounded-2xl shadow-card">
-        <div className="hud-frame relative overflow-hidden h-[380px] mb-6">
+        <div
+          onClick={() => openImage && openImage(yoenPic1, "STILL_EXPLORING / ARGENTINA")}
+          className="hud-frame relative overflow-hidden h-[380px] mb-6 cursor-zoom-in group"
+        >
           <span className="hud-bl" />
           <span className="hud-br" />
           <img
             src={yoenPic1}
             alt="Argentina"
-            className="absolute inset-0 w-full h-full object-cover object-[50%_80%] grayscale-[10%] contrast-[1.05]"
+            className="absolute inset-0 w-full h-full object-cover object-[50%_80%] grayscale-[10%] contrast-[1.05] transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
+          <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/35 transition-colors pointer-events-none z-10" />
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+            <span className="font-mono-hud text-[10px] text-primary bg-ink/80 border border-[#0d8a6e]/60 px-3 py-1">
+              &gt; EXPAND_VIEW
+            </span>
+          </div>
           <div className="absolute inset-0 hud-scanlines pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/50 to-ink/20 pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent pointer-events-none" />
-          <div className="absolute top-3 left-3 font-mono-hud text-[11px] text-[#0d8a6e] bg-primary/85 px-2 py-0.5">
-            IMG_05
-          </div>
           <div className="absolute top-3 right-3 font-mono-hud text-[11px] text-[#0d8a6e] bg-primary/85 px-2 py-0.5">
             STILL_EXPLORING / ARGENTINA
           </div>
@@ -170,8 +194,28 @@ const Contact = () => {
         </form>
       </motion.div>
 
-      <motion.div variants={slideIn("right", "tween", 0.2, 1)} className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]">
-        <EarthCanvas />
+      <motion.div variants={slideIn("right", "tween", 0.2, 1)} className="xl:flex-1 flex flex-col justify-center">
+        <div className="xl:h-[500px] md:h-[550px] h-[350px]">
+          <EarthCanvas angleRef={earthAngleRef} />
+        </div>
+        <div className="mt-2 flex flex-col items-center gap-2 pointer-events-none">
+          <div
+            className="relative w-[56px] h-[56px]"
+            style={{ perspective: "300px" }}
+          >
+            <div
+              ref={earthDotRef}
+              className="absolute inset-0"
+              style={{ transform: "rotateX(70deg)", willChange: "transform" }}
+            >
+              <div className="absolute inset-0 rounded-full border-2 border-dashed border-secondary/50" />
+              <div className="absolute top-[-4px] left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#3B82F6] shadow-[0_0_8px_rgba(59,130,246,0.6)]" />
+            </div>
+          </div>
+          <p className="font-mono-hud text-[11px] text-[#0d8a6e] tracking-wider text-center italic">
+            the world keeps on spinning... as do my burgers while I&apos;m trying to get the perfect photo.
+          </p>
+        </div>
       </motion.div>
     </div>
   );
