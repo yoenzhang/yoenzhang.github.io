@@ -2,22 +2,22 @@ import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
-import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
+import { yoenPic1 } from "../assets";
 import "../index.css";
 
 const InputField = ({ label, value, onChange, placeholder, name, type }) => (
   <label className="flex flex-col">
-    <span className="text-white font-medium mb-4">{label}</span>
+    <span className="text-ink font-medium mb-4">{label}</span>
     <input
       type={type}
       name={name}
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+      className="bg-tertiary py-4 px-6 placeholder:text-secondary text-ink rounded-lg outline-none border-none font-medium"
     />
   </label>
 );
@@ -99,9 +99,34 @@ const Contact = () => {
 
   return (
     <div className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}>
-      <motion.div variants={slideIn("left", "tween", 0.2, 1)} className="flex-[0.75] bg-black-100 p-8 rounded-2xl">
-        <p className={styles.sectionSubText}>Get in touch</p>
-        <h3 className={styles.sectionHeadText}>Contact Me</h3>
+      <motion.div variants={slideIn("left", "tween", 0.2, 1)} className="flex-[0.75] bg-tertiary border border-ink/10 p-8 rounded-2xl shadow-card">
+        <div className="hud-frame relative overflow-hidden h-[380px] mb-6">
+          <span className="hud-bl" />
+          <span className="hud-br" />
+          <img
+            src={yoenPic1}
+            alt="Argentina"
+            className="absolute inset-0 w-full h-full object-cover object-[50%_80%] grayscale-[10%] contrast-[1.05]"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 hud-scanlines pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/50 to-ink/20 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute top-3 left-3 font-mono-hud text-[11px] text-[#0d8a6e] bg-primary/85 px-2 py-0.5">
+            IMG_05
+          </div>
+          <div className="absolute top-3 right-3 font-mono-hud text-[11px] text-[#0d8a6e] bg-primary/85 px-2 py-0.5">
+            STILL_EXPLORING / ARGENTINA
+          </div>
+          <div className="absolute bottom-5 left-6 right-6">
+            <p className="font-mono-hud text-[11px] text-[#0d8a6e]">
+              <span>&gt; </span>[ 06 // TRANSMIT ]
+            </p>
+            <h3 className="text-primary font-black md:text-[44px] sm:text-[38px] text-[30px] leading-tight mt-1">
+              Contact Me.
+            </h3>
+          </div>
+        </div>
 
         <form ref={formRef} onSubmit={handleSubmit} className="mt-12 flex flex-col gap-8">
           <InputField
@@ -135,9 +160,11 @@ const Contact = () => {
 
           <button
             type="submit"
-            className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
+            className="hud-frame bg-tertiary py-3 px-8 outline-none w-fit text-ink font-mono-hud font-bold hover:bg-[#E0D9C2] transition-colors relative"
           >
-            {loading ? "Sending..." : "Send"}
+            <span className="hud-bl" />
+            <span className="hud-br" />
+            {loading ? "TRANSMITTING..." : "> SEND"}
           </button>
           {confirmation && <p className="text-green-500">{confirmation}</p>}
         </form>

@@ -11,7 +11,6 @@ import {
   nodejs,
   git,
   threejs,
-  logo,
   swift,
   typescript,
   theScore,
@@ -19,6 +18,8 @@ import {
   mobials,
   goodfood,
   traffic,
+  velt,
+  yoenPic5,
 } from "../assets";
 
 export const navLinks = [
@@ -56,11 +57,27 @@ export const technologies = [
 
 export const experiences = [
   {
+    title: "Founding Solutions AI Engineer",
+    company_name: "Velt | San Francisco, CA",
+    icon: velt,
+    iconBg: "#F5F1E8",
+    date: "Aug 2025 - Present",
+    points: [
+      "Architected 3+ agentic AI pipelines (6-12 agent chains each) replacing entire dev workflows: 10x faster documentation publishing, 8x faster client SDK installation, and 5x faster sample app creation",
+      "Deployed 50+ sample apps in TypeScript, React, and Next.js covering every SDK feature, equipping GTM and solutions teams with zero-friction demos to accelerate prospect evaluation and contract conversion",
+      "Shipped 14+ agent skill libraries, 2 MCP servers, 2 agent plugins, and a CLI enabling clients to integrate the Velt SDK hands-free into any codebase, including a pipeline that auto-updates skills to Anthropic's latest standards",
+      "Designed and built an end-to-end Playwright testing framework covering every major SDK feature, shipping 1,100+ tests in 10 days via an AI pipeline; deployed on GCP with GitHub Actions triggers on every SDK production release",
+      "Led team-wide AI adoption and engineered an internal agent chain that turns integration requests into production-ready Velt adapters for libraries like Tiptap and Yjs, cutting dev time from 2 days to 40 min",
+    ],
+  },
+  {
     title: "Mobile Software Developer - iOS",
     company_name: "ESPN Bet, theScore | Toronto, ON",
     icon: theScore,
-    iconBg: "#161329",
+    iconBg: "#F5F1E8",
     date: "Jan 2024 - Aug 2024, May 2025 - Aug 2025",
+    photo: yoenPic5,
+    photoCaption: "FIELD_OPS / THESCORE_ERA",
     points: [
       "Completed 160+ tickets over 12 months; recognized as the top-performing intern company-wide over 1 year tenure",
       "Led iOS development for \"Parlay Lounge\", \"BetVision LiveStream\" & \"MyBets 3.0\" using SwiftUI; launched 4 weeks ahead of schedule",
@@ -72,7 +89,7 @@ export const experiences = [
     title: "Data Pipeline Engineer – Undergraduate Research Assistant",
     company_name: "TRAFFIC | Remote – London, UK",
     icon: traffic,
-    iconBg: "#161329",
+    iconBg: "#F5F1E8",
     date: "May 2025 – Aug 2025",
     points: [
       "Designed and deployed an end-to-end Airflow pipeline to ingest, deduplicate, and classify ivory-trafficking news from six sources",
@@ -85,7 +102,7 @@ export const experiences = [
     title: "Frontend Developer",
     company_name: "Mozilla | Toronto, ON",
     icon: mozilla,
-    iconBg: "#161329",
+    iconBg: "#F5F1E8",
     date: "Sep 2022 – Dec 2022, May 2023 - Aug 2023",
     points: [
       "Designed and managed A/B experiments enrolling 10,000–1,000,000+ users influencing Firefox features and strategy",
@@ -98,7 +115,7 @@ export const experiences = [
     title: "Fullstack/Backend Developer",
     company_name: "Mobials Inc | Toronto, ON",
     icon: mobials,
-    iconBg: "#161329",
+    iconBg: "#F5F1E8",
     date: "Jan 2022 - Apr 2022",
     points: [
       "Enhanced AutoVerify’s API in PHP enabling 1,000+ business clients with real-time pre-approvals",
@@ -111,7 +128,7 @@ export const experiences = [
     title: "Fullstack Developer",
     company_name: "Goodfood Market Corp | Toronto, ON",
     icon: goodfood,
-    iconBg: "#161329",
+    iconBg: "#F5F1E8",
     date: "May 2021 - Aug 2021",
     points: [
       "Built full-stack data anonymization with Laravel and a Vue.js interface for secure customer-data handling",
@@ -134,7 +151,6 @@ export const projects = [
       { name: "FAISS", color: "blue-text-gradient" },
       { name: "MFCCs", color: "green-text-gradient" },
     ],
-    image: logo,
     source_code_link: "https://github.com/yoenzhang/Suggestify",
   },
   {
@@ -147,7 +163,6 @@ export const projects = [
       { name: "React", color: "pink-text-gradient" },
       { name: "NBA API", color: "yellow-text-gradient" },
     ],
-    image: logo,
     source_code_link: "https://github.com/yoenzhang/StatCheckWeb",
   },
 ];

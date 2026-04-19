@@ -1,8 +1,17 @@
-import React, { Suspense, useEffect, useState } from "react";
-import { Canvas } from "@react-three/fiber";
+import React, { Suspense, useEffect, useRef, useState } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import { DRACOLoader } from "three/addons/loaders/DRACOLoader";
 import CanvasLoader from "../Loader";
+
+const AngleReporter = ({ controlsRef, angleRef }) => {
+  useFrame(() => {
+    if (controlsRef.current && angleRef) {
+      angleRef.current = controlsRef.current.getAzimuthalAngle();
+    }
+  });
+  return null;
+};
 
 const ComputerModel = ({ isMobile }) => {
   const { scene } = useGLTF(
@@ -38,8 +47,9 @@ const ComputerModel = ({ isMobile }) => {
 
 const MemoizedComputerModel = React.memo(ComputerModel);
 
-const ComputersCanvas = () => {
+const ComputersCanvas = ({ angleRef }) => {
   const [isMobile, setIsMobile] = useState(false);
+  const controlsRef = useRef();
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 500px)");
@@ -57,7 +67,7 @@ const ComputersCanvas = () => {
 
   return (
     <Canvas
-      frameloop="demand"
+      frameloop="always"
       shadows
       dpr={[1, 2]}
       camera={{ position: [20, 3, 5], fov: 25 }}
@@ -65,10 +75,14 @@ const ComputersCanvas = () => {
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
+          ref={controlsRef}
           enableZoom={false}
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
+          autoRotate
+          autoRotateSpeed={-0.6}
         />
+        <AngleReporter controlsRef={controlsRef} angleRef={angleRef} />
         <MemoizedComputerModel isMobile={isMobile} />
       </Suspense>
       <Preload all />

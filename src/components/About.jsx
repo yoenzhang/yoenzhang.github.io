@@ -1,56 +1,39 @@
 import { motion } from 'framer-motion';
 import React from 'react';
-import { Tilt } from 'react-tilt';
-import { services } from '../constants';
 import { SectionWrapper } from '../hoc';
 import { styles } from '../styles';
 import { fadeIn, textVariant } from '../utils/motion';
-
-const ServiceCard = ({ index, title, icon }) => (
-  <Tilt className="xs:w-[250px] w-full">
-    <motion.div
-      variants={fadeIn('right', 'spring', index * 0.5, 0.75)}
-      className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
-    >
-      <div
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
-        className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col"
-      >
-        <img src={icon} alt="web-development" className="w-16 h-16 object-contain" loading="lazy" />
-
-        <h3 className="text-white text-[20px] font-bold text-center">{title}</h3>
-      </div>
-    </motion.div>
-  </Tilt>
-);
+import { yoenPic2 } from '../assets';
+import SectionPortrait from './SectionPortrait';
 
 const About = () => {
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>Introduction</p>
-        <h2 className={styles.sectionHeadText}>Overview</h2>
+        <p className={`${styles.sectionSubText} font-mono-hud`}>
+          <span className="text-[#0d8a6e]">{"> "}</span>
+          [ 01 // PLAYER_PROFILE ]
+        </p>
+        <h2 className={styles.sectionHeadText}>Overview.</h2>
       </motion.div>
 
-      <motion.p
-        variants={fadeIn('', '', 0.1, 1)}
-        className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
-      >
-        Mobile and full‑stack developer focused on shipping high‑impact user experiences. I’ve built and
-        scaled iOS features at ESPN Bet/theScore (SwiftUI/UIKit), engineered reliable data pipelines and
-        ML workflows (Airflow, Python, PostgreSQL), and delivered frontend platforms at Mozilla (React,
-        experimentation at scale). I thrive on end‑to‑end ownership, strong collaboration with design
-        and product, and building modular systems that enable team velocity.
-      </motion.p>
+      <div className="mt-6 grid grid-cols-1 md:grid-cols-[auto,1fr] gap-8 items-start">
+        <SectionPortrait src={yoenPic2} tag="IMG_01" caption="SAN_FRANCISCO.CA" />
 
-      <div className="mt-20 flex flex-wrap gap-10">
-        {services.map((service, index) => (
-          <ServiceCard key={service.title} index={index} {...service} />
-        ))}
+        <motion.p
+          variants={fadeIn('left', 'tween', 0.2, 1)}
+          className="text-secondary text-[17px] max-w-3xl leading-[30px]"
+        >
+          Hey, I’m Yoen. I’m an engineer based out of Toronto, occasionally in San Francisco, and
+          in New York whenever a bagel calls me by name. Lately I’ve been obsessed with AI agents
+          and how far you can push a well‑designed chain of them. I like the messy, end‑to‑end parts of the
+          job: figuring out what to build, making it real, and watching it land in someone’s hands.
+          Over the years I’ve bounced between iOS, frontend, data pipelines, and now agentic
+          systems, and I’ve learned that the best work usually happens when you care a little too
+          much and ship a little too fast. Outside of code, I’m probably watching the Raptors,
+          chasing a good burger spot, or wandering around trying to find the best custard tart
+          (or as the Portuguese call it, Natas).
+        </motion.p>
       </div>
     </>
   );

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { close, logo, menu } from '../assets';
+import { close, profilePhoto, menu } from '../assets';
 import { navLinks } from '../constants';
 import { styles } from '../styles';
 
@@ -9,8 +9,8 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
 
   const toggleResume = () => {
-    const resumeUrl = `${import.meta.env.BASE_URL}/yoenzhang.pdf`;
-    window.open(resumeUrl);
+    const resumeUrl = `${import.meta.env.BASE_URL}yoenzhang.pdf`;
+    window.open(resumeUrl, "_blank", "noopener,noreferrer");
   };
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Navbar = () => {
   }, [toggle]);
 
   const renderNavLinks = (isSecondary) => {
-    const baseColor = isSecondary ? 'text-secondary' : 'text-white';
+    const baseColor = isSecondary ? 'text-secondary' : 'text-ink';
     const linksExceptContact = navLinks.filter((l) => l.id !== 'contact');
     const contactLink = navLinks.find((l) => l.id === 'contact');
 
@@ -29,7 +29,7 @@ const Navbar = () => {
         {linksExceptContact.map((link) => (
           <li
             key={link.id}
-            className={`${active === link.title ? 'text-white' : baseColor} hover:text-white text-[20px] font-medium cursor-pointer`}
+            className={`${active === link.title ? 'text-ink' : baseColor} hover:text-ink text-[20px] font-medium cursor-pointer`}
             onClick={() => {
               setActive(link.title);
               if (isSecondary) setToggle(false);
@@ -38,13 +38,13 @@ const Navbar = () => {
             <a href={`#${link.id}`}>{link.title}</a>
           </li>
         ))}
-        <li className={`${baseColor} hover:text-white text-[20px] font-medium cursor-pointer`}>
+        <li className={`${baseColor} hover:text-ink text-[20px] font-medium cursor-pointer`}>
           <button onClick={toggleResume}>Resume</button>
         </li>
         {contactLink && (
           <li
             key={contactLink.id}
-            className={`${active === contactLink.title ? 'text-white' : baseColor} hover:text-white text-[20px] font-medium cursor-pointer`}
+            className={`${active === contactLink.title ? 'text-ink' : baseColor} hover:text-ink text-[20px] font-medium cursor-pointer`}
             onClick={() => {
               setActive(contactLink.title);
               if (isSecondary) setToggle(false);
@@ -71,8 +71,8 @@ const Navbar = () => {
               window.scrollTo(0, 0);
             }}
           >
-            <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
-            <p className="text-white text-[20px] font-bold cursor-pointer flex">
+            <img src={profilePhoto} alt="Yoen Zhang" className="w-9 h-9 rounded-full object-cover" />
+            <p className="text-ink text-[20px] font-bold cursor-pointer flex">
               YOEN&nbsp;
               <span className="sm:block hidden">ZHANG</span>
             </p>

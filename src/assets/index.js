@@ -4,6 +4,7 @@ import mozilla from "./company/mozilla.png";
 import mobials from "./company/mobials.png";
 import goodfood from "./company/goodfood.png";
 import traffic from "./company/traffic.png";
+import velt from "./company/velt.png";
 
 // Import tech stack images
 import python from "./tech-stack/python.png";
@@ -34,7 +35,12 @@ import swift from "./tech-stack/swift.png";
 import typescript from "./tech-stack/typescript.png";
 
 // Import common assets
-import logo from "./logo.svg";
+import profilePhoto from "./Yoen_Zhang.jpg";
+import yoenPic1 from "./yoen-pics/IMG_2400.jpg";
+import yoenPic2 from "./yoen-pics/IMG_2512.jpg";
+import yoenPic3 from "./yoen-pics/IMG_3854.jpg";
+import yoenPic4 from "./yoen-pics/IMG_8982.jpg";
+import yoenPic5 from "./yoen-pics/IMG_6828.jpg";
 import github from "./github.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
@@ -59,7 +65,12 @@ export {
   mhft,
   sketcher,
   CompileVortex,
-  logo,
+  profilePhoto,
+  yoenPic1,
+  yoenPic2,
+  yoenPic3,
+  yoenPic4,
+  yoenPic5,
   menu,
   close,
   swift,
@@ -69,4 +80,5 @@ export {
   mobials,
   goodfood,
   traffic,
+  velt,
 };
